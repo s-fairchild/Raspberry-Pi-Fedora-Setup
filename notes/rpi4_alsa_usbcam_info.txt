@@ -1,0 +1,14 @@
+HD Camera Manufacturer HD USB Camera at usb-0000:01:00.0-1.1, high speed : USB Audio
+
+Capture:
+  Status: Stop
+  Interface 3
+    Altset 1
+    Format: S16_LE
+    Channels: 1
+    Endpoint: 0x84 (4 IN) (ASYNC)
+    Rates: 8000, 11025, 16000, 22050, 24000, 44100, 48000
+    Data packet interval: 1000 us
+    Bits: 16
+    Channel map: MONO
+
