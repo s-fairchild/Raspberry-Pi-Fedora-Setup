@@ -1,0 +1,32 @@
+[pi4]
+arm_boost=1
+
+# Enable DRM VC4 V3D driver
+# No audio disables audio for the HDMI ports only, not other sound cards e.g camera sound
+dtoverlay=vc4-kms-v3d-pi4,noaudio
+max_framebuffers=2
+
+
+start_x=1
+# start_file=start4x.elf
+# fixup_file=fixup4.dat
+
+[pi3]
+# Enable DRM VC4 V3D driver
+# No audio disables audio for the HDMI ports only, not other sound cards e.g camera sound
+dtoverlay=vc4-kms-v3d,noaudio
+max_framebuffers=2
+
+[all]
+enable_uart=1
+
+# Pre kernel firmware UART
+earlycon=uart8250,mmio32,0xfe215040
+
+# Change as needed, more than is needed is not helpful
+gpu_mem=256
+
+# Remove if using armv6 Raspberry Pi Zero
+arm_64bit=1
+
+dtoverlay=disable-bt
