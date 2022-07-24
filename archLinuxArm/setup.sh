@@ -25,6 +25,12 @@ main() {
     finalCleanup "${tmpFile}"
 }
 
+setupEmbyContainer() {
+
+    useradd -M -s /sbin/nologin emby
+    usermod -aG video emby
+}
+
 systemUpgrade() {
 
     local tmpFile="${1}"
@@ -34,7 +40,7 @@ systemUpgrade() {
     pacman -Syu # full upgrade
     echo "rebooted=true" > "${tmpFile}" || abort "Failed to create temp reboot check file"
     logger -p info -s "From bash program $(pwd)/${0} Rebooting system now after full upgrade!"
-    systemctl reboot
+    # systemctl reboot
 }
 
 rebootCheck() {
@@ -72,6 +78,14 @@ installPkgs() {
         podman
         btrfs-progs
         podman-docker
+        raspberrypi-firmware
+        community/motion
+        wget
+        screen
+        extra/boost-libs
+        extra/libgudev
+        community/sdl_image
+        community/apcupsd
     )
 
     pacman -S --needed --noconfirm "${pkgs[@]}" || abort "Failed to install packages ${pkgs[*]}"
